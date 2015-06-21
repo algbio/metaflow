@@ -26,11 +26,15 @@ See Section **Genome File** below if you want to write your own script for conve
 	
 #### Example
 
-We provide an example *BLAST* alignment file for testing pruposes in the directory **Example**. You can run:
+Download a sample blast alignment file (by default to **Example/MCF_Sample_100.blast**) by running in the **metaflow** folder:
 
-	python BLAST_TO_LGF.py Example/sample1.blast NCBI/NCBI_Ref_Genome.txt 100 0
+	make example
 	
-to produce the output file **Example/sample1.lgf** for this sample. 
+Then run	
+
+	python BLAST_TO_LGF.py Example/MCF_Sample_100.blast NCBI/NCBI_Ref_Genome.txt 250 1
+	
+to produce the output file **Example/MCF_Sample_100.lgf** for this sample. 
 
 # Running MetaFlow
 
@@ -41,15 +45,19 @@ Run the following command:
 where
 
 - **input.lgf**: the input file prepared from a read alignment file (see the previous section, **Preparing the input**)
-- **Genome_File**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below.
+- **Genome_File.txt**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below.
+
+#### Example
+
+	./metaflow Example/MCF_Sample_100.lgf NCBI/NCBI_Ref_Genome.txt
 
 ## Configuration file
 
 You can configure some parameters of *MetaFlow* by editting the file *MCF.config* (which must be in the same directory as the executable). The list of all these parameters and their meaning is described in the Supplementary Material of the paper. The main ones are the following ones. Decrease teir value if the sample has low coverage (but false positives may be introduced).
 
-- **REQUIRED_MIN_ABUNDANCE** For any species, if the absolute abundance is lower than REQUIRED_MIN_ABUNDANCE, then that species is considered an outlier and will be removed (default=0.3).
-- **REQUIRED_AVERAGE_CHUNKS_COVERAGE** For any species, if the average coverage of its chunks (number of reads/number of chunks) is lower than REQUIRED_AVERAGE_CHUNKS_COVERAGE, then the species is considered an outlier and will be removed (default=2). 
-- **REQUIRED_MAX_PER_OF_EMPTY_CHUNKS** For any species, if the ratio between number of chunks not covered by any read and the total number of chunks is more than REQUIRED_MAX_PER_OF_EMPTY_CHUNKS, then the species will be considered an outlier and will be removed (values in [0..1]) (default=0.4). 
+- **REQUIRED_MIN_ABUNDANCE** For any species, if the absolute abundance is lower than REQUIRED_MIN_ABUNDANCE, then that species is considered an outlier and will be removed (default=**0.3**).
+- **REQUIRED_AVERAGE_CHUNKS_COVERAGE** For any species, if the average coverage of its chunks (number of reads/number of chunks) is lower than REQUIRED_AVERAGE_CHUNKS_COVERAGE, then the species is considered an outlier and will be removed (default=**2**). 
+- **REQUIRED_MAX_PER_OF_EMPTY_CHUNKS** For any species, if the ratio between number of chunks not covered by any read and the total number of chunks is more than REQUIRED_MAX_PER_OF_EMPTY_CHUNKS, then the species will be considered an outlier and will be removed (values in [0..1]) (default=**0.4**). 
 
 
 
