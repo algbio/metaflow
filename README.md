@@ -43,6 +43,16 @@ where
 - **input.LGF**: the input file prepared from a read alignment file (see the previous section, **Preparing the input**)
 - **Genome_File**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below.
 
+## Configuration file
+
+You can configure some parameters of *MetaFlow* by editting the file *MCF.config* (which must be in the same directory as the executable). The list of all these parameters and their meaning is described in the Supplementary Material of the paper. The main ones are the following ones. Decrease teir value if the sample has low coverage (but false positives may be introduced).
+
+- **REQUIRED_MIN_ABUNDANCE	0.3** For any species, if the absolute abundance is lower than REQUIRED_MIN_ABUNDANCE, then that species is considered an outlier and will be removed.
+- **REQUIRED_AVERAGE_CHUNKS_COVERAGE 6** For any species, if the average coverage of its chunks (number of reads/number of chunks) is lower than REQUIRED_AVERAGE_CHUNKS_COVERAGE, then the species is considered an outlier and will be removed. 
+- **REQUIRED_MAX_PER_OF_EMPTY_CHUNKS	0.3	** For any species, if the ratio between number of chunks not covered by any read and the total number of chunks is more than REQUIRED_MAX_PER_OF_EMPTY_CHUNKS, then the species will be considered an outlier and will be removed (values in [0..1]). 
+
+
+
 # Reading the output
 
 All output files are in CSV format (TAB-separated) to make any further analysis easy. They will be generated in the same folder where the input LGF file is located, except for the log file which will be generated in the **Log** directory. The main output file is **abundance.csv**. All output files are described below.
@@ -74,6 +84,7 @@ with the following rules (\t is the TAB character) :
 
 - **GenomeName** is in the format GeneraName_SpeciesName,
 - **GenomeLength** is the length of the genome. If one species has different strains with different lengths, select the shortest one.
+
 
 ### Example
 
