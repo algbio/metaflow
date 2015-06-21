@@ -160,7 +160,7 @@ If there is a read **r1** that maps to chunk **3** in genome **1**, add a line
 
 Where **Counter** is an integer counter that starts from 0, and **Cost** is a transformation of the read alignment score into a cost (lower is better). Our BLAST_TO_LGF.py script uses the following transformation: cost = |score - max_score| + min_score.
 
-### Summary header 
+#### Summary header 
 
 The next line is
 
