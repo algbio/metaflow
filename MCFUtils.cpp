@@ -124,14 +124,14 @@ void readDigraph(
 	){
 	try {
 			digraphReader(g, mcfResultSt.lgfFile). // read the graph into g
-				arcMap("weight", arcWeight).			 // read the 'weight' arc map into edgeWeight
+				arcMap("cost", arcWeight).			 // read the 'weight' arc map into edgeWeight
 				nodeMap("label", nodeLabel).			 // read the 'label' node map into nodeLabel
 				nodeMap("genome", inWhichGenome).			 // read the 'genome' node map into inWhichGenome
 				attribute("number_of_genomes", mcfResultSt.numOfGenomes). // Not used
 				attribute("number_of_mapping_reads", mcfResultSt.readInfoSt.numOfMappedReads).
 				attribute("avg_read_length", mcfResultSt.readInfoSt.averageReadLength).
-				attribute("max_score", mcfResultSt.maxScore).
-				attribute("min_score", mcfResultSt.minScore).
+				attribute("max_cost", mcfResultSt.maxScore).
+				attribute("min_cost", mcfResultSt.minScore).
 				run();
 				removeLowScoreArcs(g,inWhichGenome,arcWeight);
 //				printRunningTime(tStart, "Finished reading data. Reading data took: ");
