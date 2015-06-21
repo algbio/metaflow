@@ -1,5 +1,5 @@
 # MetaFlow
-*MetaFlow* is a program for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their relative abundances.
+*MetaFlow* is a tool for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their relative abundances.
 
 # Installing and compiling
 
@@ -15,14 +15,14 @@ This will create the executable **metaflow** in the same directory.
 
 	python BLAST_TO_LGF.py Read_Mappings.blast Genome_File Average_Read_Length Sequencing_Machine
 	
-which produces the file *Read_Mappings.lgf* in the same directory. The parameters are:
+which produces the file *Read_Mappings.lgf* in the same directory of Read_Mappings.blast file. The parameters are:
 
 - **Read_Mappings.blast**: Blast output file. It must be the tabular format with format=6
 - **Genome_File**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below.
 - **Average_Read_Length**: The average read length of the metagenomics read in the fasta file. 
 - **Sequencing_Machine**: Integer value (0 For Illumina, 1 For 454 Pyrosequencing)
 	
-See Section **Genome File** below if you want to write your own script for convering read alignments (e.g. from a different aligner than *BLAST*) to the **LGF** format needed for *MetaFlow*.
+See Section **Genome File** below if you want to write your own script for convering read alignments (e.g. from a different aligner than *BLAST*) to the **LGF** format required for running *MetaFlow*.
 	
 #### Example
 
@@ -47,9 +47,9 @@ where
 
 You can configure some parameters of *MetaFlow* by editting the file *MCF.config* (which must be in the same directory as the executable). The list of all these parameters and their meaning is described in the Supplementary Material of the paper. The main ones are the following ones. Decrease teir value if the sample has low coverage (but false positives may be introduced).
 
-- **REQUIRED_MIN_ABUNDANCE	0.3** For any species, if the absolute abundance is lower than REQUIRED_MIN_ABUNDANCE, then that species is considered an outlier and will be removed.
-- **REQUIRED_AVERAGE_CHUNKS_COVERAGE 6** For any species, if the average coverage of its chunks (number of reads/number of chunks) is lower than REQUIRED_AVERAGE_CHUNKS_COVERAGE, then the species is considered an outlier and will be removed. 
-- **REQUIRED_MAX_PER_OF_EMPTY_CHUNKS	0.3** For any species, if the ratio between number of chunks not covered by any read and the total number of chunks is more than REQUIRED_MAX_PER_OF_EMPTY_CHUNKS, then the species will be considered an outlier and will be removed (values in [0..1]). 
+- **REQUIRED_MIN_ABUNDANCE** For any species, if the absolute abundance is lower than REQUIRED_MIN_ABUNDANCE, then that species is considered an outlier and will be removed (default=0.3).
+- **REQUIRED_AVERAGE_CHUNKS_COVERAGE** For any species, if the average coverage of its chunks (number of reads/number of chunks) is lower than REQUIRED_AVERAGE_CHUNKS_COVERAGE, then the species is considered an outlier and will be removed (default=2). 
+- **REQUIRED_MAX_PER_OF_EMPTY_CHUNKS** For any species, if the ratio between number of chunks not covered by any read and the total number of chunks is more than REQUIRED_MAX_PER_OF_EMPTY_CHUNKS, then the species will be considered an outlier and will be removed (values in [0..1]) (default=0.4). 
 
 
 
