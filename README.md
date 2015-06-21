@@ -11,20 +11,20 @@ This will create the executable **metaflow** in the same directory.
 
 # Preparing the input
 
-*MetaFlow*'s input is a graph based representation, in LEMON's **LGF** format (LEMON Graph Format, of the alignments of the metagenomic reads in a collection of reference bacterial genomes. We experimented only with *BLAST* alignments (though any aligner could be used) and have created a Python script which converts *BLAST*'s output to an input for *MetaFlow*. Run:
+*MetaFlow*'s input is a graph based representation, in LEMON's **LGF** format (LEMON Graph Format, of the alignments of the metagenomic reads in a collection of reference bacterial genomes. We experimented only with *BLAST* alignments (though any aligner could be used) and have created a Python script **BLAST_TO_LGF.py** which converts *BLAST*'s output to an input for *MetaFlow*. Run:
 
-	python BLAST_to_LGF.py Blast_File_Name Genome_File Average_Read_Length Sequencing_Machine
+	python BLAST_TO_LGF.py Read_Mappings.blast Genome_File Average_Read_Length Sequencing_Machine
 	
-where 
+which produces the file *Read_Mappings.lgf* in the same directory. The parameters are:
 
-- **Blast_File_Name**: Blast output file. It must be the tabular with format=6
+- **Read_Mappings.blast**: Blast output file. It must be the tabular format with format=6
 - **Genome_File**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below.
 - **Average_Read_Length**: The average read length of the metagenomics read in the fasta file. 
 - **Sequencing_Machine**: Integer value (0 For Illumina, 1 For 454 Pyrosequencing)
 	
 See Section **Genome File** below if you want to write your own script for convering read alignments (e.g. from a different aligner than *BLAST*) to the **LGF** format needed for *MetaFlow*.
 	
-### Example
+#### Example
 
 We provide an example *BLAST* alignment file for testing pruposes in the directory **Example**. You can run:
 
@@ -36,11 +36,11 @@ to produce the output file **Example/sample1.lgf** for this sample.
 
 Run the following command:
 
-	./metaflow input.LGF Genome_File.txt
+	./metaflow input.lgf Genome_File.txt
 
 where
 
-- **input.LGF**: the input file prepared from a read alignment file (see the previous section, **Preparing the input**)
+- **input.lgf**: the input file prepared from a read alignment file (see the previous section, **Preparing the input**)
 - **Genome_File**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below.
 
 ## Configuration file
@@ -49,7 +49,7 @@ You can configure some parameters of *MetaFlow* by editting the file *MCF.config
 
 - **REQUIRED_MIN_ABUNDANCE	0.3** For any species, if the absolute abundance is lower than REQUIRED_MIN_ABUNDANCE, then that species is considered an outlier and will be removed.
 - **REQUIRED_AVERAGE_CHUNKS_COVERAGE 6** For any species, if the average coverage of its chunks (number of reads/number of chunks) is lower than REQUIRED_AVERAGE_CHUNKS_COVERAGE, then the species is considered an outlier and will be removed. 
-- **REQUIRED_MAX_PER_OF_EMPTY_CHUNKS	0.3	** For any species, if the ratio between number of chunks not covered by any read and the total number of chunks is more than REQUIRED_MAX_PER_OF_EMPTY_CHUNKS, then the species will be considered an outlier and will be removed (values in [0..1]). 
+- **REQUIRED_MAX_PER_OF_EMPTY_CHUNKS	0.3** For any species, if the ratio between number of chunks not covered by any read and the total number of chunks is more than REQUIRED_MAX_PER_OF_EMPTY_CHUNKS, then the species will be considered an outlier and will be removed (values in [0..1]). 
 
 
 
@@ -71,8 +71,8 @@ All output files are in CSV format (TAB-separated) to make any further analysis 
 | stage3.dist.csv				| Intermediary read distribution after stage 2 													|
 | .log 							| The running log file.																			|
 
-
-# Genome file
+# Additonal information
+## Genome file
 
 We already provide one for the NCBI database, retrieved on June 10, 2015, in the directory **NCBI**. **Read this section if you want to add new known genome references to the analysis**.
 
@@ -86,7 +86,7 @@ with the following rules (\t is the TAB character) :
 - **GenomeLength** is the length of the genome. If one species has different strains with different lengths, select the shortest one.
 
 
-### Example
+#### Example
 
 	Corynebacterium_diphtheriae		2395441
 	Methylomonas_methanica	5051681
@@ -96,7 +96,7 @@ with the following rules (\t is the TAB character) :
 	Erwinia_amylovora	3805573
 	Brucella_ovis	1164220
 
-# LGF Format
+## LGF Format
 
 **Read this section if you are writing your own script to convert read alignments into the LGF format needed as input for *MetaFlow* (for example if you are using a different aligner than BLAST).**
 
@@ -169,7 +169,7 @@ If the total number of reads is 100, with average read length 50, and they map t
 	min_cost	100
 
 
-### Example
+#### Example
 
 	@nodes
 	label	genome
