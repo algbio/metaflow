@@ -47,9 +47,9 @@ where
 
 You can configure some parameters of *MetaFlow* by editting the file *MCF.config* (which must be in the same directory as the executable). The list of all these parameters and their meaning is described in the Supplementary Material of the paper. The main ones are the following ones. Decrease teir value if the sample has low coverage (but false positives may be introduced).
 
-- **REQUIRED_MIN_ABUNDANCE	0.3** For any species, if the absolute abundance is lower than REQUIRED_MIN_ABUNDANCE, then that species is considered an outlier and will be removed.
-- **REQUIRED_AVERAGE_CHUNKS_COVERAGE 6** For any species, if the average coverage of its chunks (number of reads/number of chunks) is lower than REQUIRED_AVERAGE_CHUNKS_COVERAGE, then the species is considered an outlier and will be removed. 
-- **REQUIRED_MAX_PER_OF_EMPTY_CHUNKS	0.3** For any species, if the ratio between number of chunks not covered by any read and the total number of chunks is more than REQUIRED_MAX_PER_OF_EMPTY_CHUNKS, then the species will be considered an outlier and will be removed (values in [0..1]). 
+- **REQUIRED_MIN_ABUNDANCE** For any species, if the absolute abundance is lower than REQUIRED_MIN_ABUNDANCE, then that species is considered an outlier and will be removed (default=0.3).
+- **REQUIRED_AVERAGE_CHUNKS_COVERAGE** For any species, if the average coverage of its chunks (number of reads/number of chunks) is lower than REQUIRED_AVERAGE_CHUNKS_COVERAGE, then the species is considered an outlier and will be removed (default=2). 
+- **REQUIRED_MAX_PER_OF_EMPTY_CHUNKS** For any species, if the ratio between number of chunks not covered by any read and the total number of chunks is more than REQUIRED_MAX_PER_OF_EMPTY_CHUNKS, then the species will be considered an outlier and will be removed (values in [0..1]) (default=0.4). 
 
 
 
