@@ -5,16 +5,27 @@ MetaFlow is a program for community profiling of a metagenomic sample.
 [This part will be updated when we finish and try compiling it]
 
 ** Running the tool:
-./MCF_Abundance_Estimation {LGF} {Genome File}
+
+1. Convert Blast output file into LGF file using the script Create_LGF.py. For example:
+/python Create_LGF.py Blast_File_Name Genome_File Average_Read_Length Sequencing_Machine
+
+Blast_File_Name: Blast output file. It must be the tabular with format=6
+Genome_File: A file contains the genomes in the reference database and their lengths. We provide one for NCBI database in the folder NCBI.
+Average_Read_Length: The average read length of the metagenomics read in the fasta file. 
+Sequencing_Machine: Integer value (0 For Illumina, 1 For 454 Pyrosequencing)
+
+2. Run MetaFlow using the command:
+
+./MCF_Abundance_Estimation {LGF} {Genome_File}
 
 ** INPUT:
 The tool takes two input files:
-1- LGF(Lemon Graph File):-
+1. LGF(Lemon Graph File):-
 The aligner output file should be transformed into LGF format to be processed by our tool. We provide a python script file which converts the tabular Blast output (with format=6) 
 into our mapping file. If the user wishes to use another aligner, he should write his script for transforming this aligner’s output into our mapping file format.
 The file formate is explained below.
 
-2- Genome File:-
+2. Genome File:-
 Genome file contains as in NCBI bacterial. We provide a file for NCBI Bacterial database taken on 10/06/2015. The file location is Tool_Home\NCBI\NCBI_Ref_Genome.txt.
 If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. 
 The file format is explained below.    
