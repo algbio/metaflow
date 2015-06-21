@@ -34,7 +34,7 @@ Then run
 
 	python BLAST_TO_LGF.py Example/MCF_Sample_100.blast NCBI/NCBI_Ref_Genome.txt 250 1
 	
-to produce the output file **Example/MCF_Sample_100.lgf** for this sample. 
+to produce the output file **Example/MCF_Sample_100.blast.lgf** for this sample. 
 
 # Running MetaFlow
 
@@ -49,7 +49,7 @@ where
 
 #### Example
 
-	./metaflow Example/MCF_Sample_100.lgf NCBI/NCBI_Ref_Genome.txt
+	./metaflow Example/MCF_Sample_100.blast.lgf NCBI/NCBI_Ref_Genome.txt
 
 ## Configuration file
 
