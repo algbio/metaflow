@@ -197,7 +197,7 @@ def writeLGF(speciesDict, lgfFile):
 					if read not in readSet:
 						readSet.add(read)
 						lgf.write(read+"\t-1\n")
-	lgf.write("@arcs\n\t\tlabel\tweight\n")
+	lgf.write("@arcs\n\t\tlabel\tcost\n")
 	counter=0	
 	print "Max_Score: "+str(maxScore)+"\tMin_Score: "+str(minScore)
 	for species in speciesDict:
@@ -216,8 +216,8 @@ def writeLGF(speciesDict, lgfFile):
 	lgf.write("number_of_genomes\t"+str(nOfGenomes)+"\n")
 	lgf.write("number_of_mapping_reads\t"+str(len(readSet))+"\n")
 	lgf.write("avg_read_length\t"+str(avgLen)+"\n")
-	lgf.write("max_score\t"+str(maxScore)+"\n")
-	lgf.write("min_score\t"+str(100)+"\n")
+	lgf.write("max_cost\t"+str(maxScore)+"\n")
+	lgf.write("min_cost\t"+str(100)+"\n")
 	lgf.close()	
 
 createLGF(blastFile, ncbiFile, lgfFile)
