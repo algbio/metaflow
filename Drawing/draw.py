@@ -2,6 +2,27 @@ import argparse
 import subprocess
 import os
 
+
+
+def writeAbundance(tree, file):
+	if not tree:
+		return
+	newTree=dict()
+	sepIdx=-1	
+	for clade in tree:		
+		abundance=tree[clade]
+		if "." in clade:
+			sepIdx= clade.rfind(".")
+			newClade=clade[0:sepIdx]
+			if newClade in newTree:
+				newTree[newClade]=newTree[newClade]+abundance
+			else:
+				newTree[newClade]=abundance
+		else:
+			sepIdx= -1					
+		file.write(clade[(sepIdx+1):len(clade)]+"\t"+str(abundance)+"\n")		
+	writeAbundance(newTree,file)
+
 # set input parameters
 parser = argparse.ArgumentParser(description="This script takes as input MetaFlow's output csv file and runs graphlan to produce a tree-of-life represenation of the species. \n Ver. 1.0")
 
@@ -23,9 +44,10 @@ with open(inputFilename) as f2:
 outputFile = open(outputFileName,'w')
 
 
+fullTree=dict()
 for species in results[1:]:
 	speciesName = species.split('\t')[1]
-	speciesAbundance = species.split('\t')[6]
+	speciesAbundance = species.split('\t')[6].strip()
 	speciesPath = ""
 	for sF in speciesFull:
 		tempName = speciesName.replace('_',' ')
@@ -41,7 +63,23 @@ for species in results[1:]:
 			break;
 	if speciesPath != "":
 		outputFile.write(speciesPath + '\n')
+		if speciesPath.count(".")==5:	##Include only species with 7 levels. More than 7 levels Should be fixed by hand.
+			fullTree[speciesPath]=float(speciesAbundance)
 	else:
 		outputFile.write('NOT FOUND\n')
-
 outputFile.close()
+
+test=open("Test_Example","w")
+
+
+fixedFullTree=dict()
+for clade in fullTree:			## Put the genera in the right location in the path
+	splitClade=clade.split("\t")
+	path=splitClade[0]
+	genera=splitClade[1]
+	sepIdx= clade.rfind(".")
+	fullpath=path[0:sepIdx]+"."+genera+"."+path[sepIdx+1:len(path)]
+	fixedFullTree[fullpath]=fullTree[clade]
+	print (fullpath)
+writeAbundance(fixedFullTree,test)	## Recursive call for writing the sum on every clade
+test.close()
