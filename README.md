@@ -2,7 +2,6 @@
 *MetaFlow* is a tool for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their relative abundances.
 
 # 1. Installing and compiling
-===
 
 *MetaFlow* is written in C++ and requires the free [LEMON library](http://lemon.cs.elte.hu). We provide a precompiled version of LEMON in the directory **lemon_binaries_linux**. To install *MetaFlow*, in the **metaflow** directory run:
 
@@ -10,7 +9,7 @@
 
 This will create the executable **metaflow** in the same directory.
 
-# Preparing the input
+# 2. Preparing the input
 
 *MetaFlow*'s input is a graph based representation, in LEMON's **LGF** format (LEMON Graph Format, of the alignments of the metagenomic reads in a collection of reference bacterial genomes. We experimented only with *BLAST* alignments (though any aligner could be used) and have created a Python script **BLAST_TO_LGF.py** which converts *BLAST*'s output to an input for *MetaFlow*. Run:
 
@@ -62,13 +61,13 @@ You can configure some parameters of *MetaFlow* by editting the file *MCF.config
 
 
 
-# Reading the output
+# 3. Reading the output
 
 All output files are in CSV format (TAB-separated) to make any further analysis easy. They will be generated in the same folder where the input LGF file is located, except for the log file which will be generated in the **Log** directory. The main output file is **abundance.csv**. All output files are described below.
 
 |	File 						|	Description																					|
 |-------------------------------|-----------------------------------------------------------------------------------------------|
-| **abundance.csv** 				| The main output file. It contains the final estimation of the species richness and abundance.	|
+| **abundance.csv** 				| The main output file. It contains the final estimation of the species richness and abundance.	**The abundances are relative to the known species** |
 | **dist.csv** 						| It contains the final distribution of the reads over all chunks in all genomes.				|
 | stage0.abundance.csv			| Intermediary internal files that contain the estimation of the species richness and abundance	|
 | stage1.abundance.csv			| Intermediary adundances after stage 1															|
@@ -80,7 +79,7 @@ All output files are in CSV format (TAB-separated) to make any further analysis 
 | stage3.dist.csv				| Intermediary read distribution after stage 2 													|
 | .log 							| The running log file.																			|
 
-# Additonal information
+# 4. Additonal information
 ## Genome file
 
 We already provide one for the NCBI database, retrieved on June 10, 2015, in the directory **NCBI**. **Read this section if you want to add new known genome references to the analysis**.
