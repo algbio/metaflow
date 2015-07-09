@@ -36,7 +36,7 @@ Then run
 	
 to produce the output file **Example/MCF_Sample_100.blast.lgf** for this sample. 
 
-# Running MetaFlow
+# 3. Running MetaFlow
 
 Run the following command:
 
@@ -53,7 +53,7 @@ where
 
 ## Configuration file
 
-You can configure some parameters of *MetaFlow* by editting the file *MCF.config* (which must be in the same directory as the executable). The list of all these parameters and their meaning is described in the Supplementary Material of the paper. The main ones are the following ones. Decrease teir value if the sample has low coverage (but false positives may be introduced).
+You can configure some parameters of *MetaFlow* by editting the file *MCF.config* (which must be in the same directory as the executable). The list of all these parameters and their meaning is described in the Supplementary Material of the paper. The main ones are the following ones. Decrease their value if the sample has low coverage (but false positives may be introduced).
 
 - **REQUIRED_MIN_ABUNDANCE** For any species, if the absolute abundance is lower than REQUIRED_MIN_ABUNDANCE, then that species is considered an outlier and will be removed (default=**0.3**).
 - **REQUIRED_AVERAGE_CHUNKS_COVERAGE** For any species, if the average coverage of its chunks (number of reads/number of chunks) is lower than REQUIRED_AVERAGE_CHUNKS_COVERAGE, then the species is considered an outlier and will be removed (default=**2**). 
@@ -61,13 +61,13 @@ You can configure some parameters of *MetaFlow* by editting the file *MCF.config
 
 
 
-# 3. Reading the output
+# 4. Reading the output
 
 All output files are in CSV format (TAB-separated) to make any further analysis easy. They will be generated in the same folder where the input LGF file is located, except for the log file which will be generated in the **Log** directory. The main output file is **abundance.csv**. All output files are described below.
 
 |	File 						|	Description																					|
 |-------------------------------|-----------------------------------------------------------------------------------------------|
-| **abundance.csv** 				| The main output file. It contains the final estimation of the species richness and abundance.	**The abundances are relative to the known species** |
+| **abundance.csv** 				| The main output file. It contains the final estimation of the species richness and abundance.	**The abundances are relative to the known species**. |
 | **dist.csv** 						| It contains the final distribution of the reads over all chunks in all genomes.				|
 | stage0.abundance.csv			| Intermediary internal files that contain the estimation of the species richness and abundance	|
 | stage1.abundance.csv			| Intermediary adundances after stage 1															|
@@ -79,7 +79,7 @@ All output files are in CSV format (TAB-separated) to make any further analysis 
 | stage3.dist.csv				| Intermediary read distribution after stage 2 													|
 | .log 							| The running log file.																			|
 
-# 4. Additonal information
+# 5. Additonal information
 ## Genome file
 
 We already provide one for the NCBI database, retrieved on June 10, 2015, in the directory **NCBI**. **Read this section if you want to add new known genome references to the analysis**.
