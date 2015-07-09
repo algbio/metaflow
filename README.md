@@ -1,7 +1,8 @@
 # MetaFlow
 *MetaFlow* is a tool for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their relative abundances.
 
-# Installing and compiling
+# 1. Installing and compiling
+===
 
 *MetaFlow* is written in C++ and requires the free [LEMON library](http://lemon.cs.elte.hu). We provide a precompiled version of LEMON in the directory **lemon_binaries_linux**. To install *MetaFlow*, in the **metaflow** directory run:
 
