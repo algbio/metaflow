@@ -110,14 +110,14 @@ with the following rules (\t is the TAB character) :
 
 The file format is the following one (\t is the TAB character):
 
-#### Node header
+#### 5.2.1 Node header
 
 The file starts with two lines marks the beginning of:
 
 	@nodes
 	label\tgenome
 
-#### Genome chunk nodes
+#### 5.2.2 Genome chunk nodes
 
 Next follows a sequence of lines with the format 
 
@@ -131,7 +131,7 @@ Consider for exmaple the **Brucella_ovis** genome from the Genome file (see the 
 	.....	...
 	402_582	402
 
-#### Read nodes
+#### 5.2.3 Read nodes
 
 Next follows a list of all reads in the form 
 
@@ -145,14 +145,14 @@ For example if we have 10 reads named in the fasta file (r1, r2, ..., r10), we a
 	..	-1
 	r10	-1
 
-#### Arcs (mappings) header
+#### 5.2.4 Arcs (mappings) header
 
 The next two lines mark the start of mapping from read to chunks.
 
 	@arcs 
 	\t\tlabel\tweight
 
-#### Mappings of reads to genome chunks
+#### 5.2.5 Mappings of reads to genome chunks
 
 If there is a read **r1** that maps to chunk **3** in genome **1**, add a line
 
@@ -160,13 +160,13 @@ If there is a read **r1** that maps to chunk **3** in genome **1**, add a line
 
 Where **Counter** is an integer counter that starts from 0, and **Cost** is a transformation of the read alignment score into a cost (lower is better). Our BLAST_TO_LGF.py script uses the following transformation: cost = |score - max_score| + min_score.
 
-#### Summary header 
+#### 5.2.6 Summary header 
 
 The next line is
 
 @attributes
 
-#### Summary
+#### 5.2.7 Summary
 
 If the total number of reads is 100, with average read length 50, and they map to 10 genomes, and maximum cost is 150, minimum cost is 100, add the following lines:
 
