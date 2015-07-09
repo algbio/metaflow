@@ -80,7 +80,7 @@ All output files are in CSV format (TAB-separated) to make any further analysis 
 | .log 							| The running log file.																			|
 
 # 5. Additonal information
-## Genome file
+## 5.1 Genome file
 
 We already provide one for the NCBI database, retrieved on June 10, 2015, in the directory **NCBI**. **Read this section if you want to add new known genome references to the analysis**.
 
@@ -104,7 +104,7 @@ with the following rules (\t is the TAB character) :
 	Erwinia_amylovora	3805573
 	Brucella_ovis	1164220
 
-## LGF Format
+## 5.2 LGF Format
 
 **Read this section if you are writing your own script to convert read alignments into the LGF format needed as input for *MetaFlow* (for example if you are using a different aligner than BLAST).**
 
