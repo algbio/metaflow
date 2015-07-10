@@ -1,8 +1,8 @@
 # MetaFlow 
 *MetaFlow* is a tool for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their abundances (relative to the known reference genomes). 
 
-#### Version: 0.9
-#### Contact: tomescu [at] cs.helsinki.fi
+**Version: 0.9**
+**Contact: tomescu [at] cs.helsinki.fi**
 
 
 # 1. Installing and compiling
