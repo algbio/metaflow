@@ -106,7 +106,7 @@ with the following rules (\t is the TAB character) :
 
 ## 5.2 LGF Format
 
-**Read this section if you are writing your own script to convert read alignments into the LGF format needed as input for *MetaFlow* (for example if you are using a different aligner than BLAST).**
+**Read this section if you are writing your own script to convert read alignments into the LGF format needed as input for *MetaFlow* (for example if you are using a different aligner than BLAST).** See also [LGF format](http://lemon.cs.elte.hu/pub/doc/latest/a00002.html) in the LEMON documentation.
 
 The file format is the following one (\t is the TAB character):
 
