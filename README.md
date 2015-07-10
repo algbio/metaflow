@@ -115,7 +115,7 @@ The file format is the following one (\t is the TAB character):
 The file starts with two lines marks the beginning of:
 
 	@nodes
-	label\tgenome
+	label\tgenomew
 
 #### 5.2.2 Genome chunk nodes
 
@@ -150,7 +150,7 @@ For example if we have 10 reads named in the fasta file (r1, r2, ..., r10), we a
 The next two lines mark the start of mapping from read to chunks.
 
 	@arcs 
-	\t\tlabel\tweight
+	\t\tlabel\tcost
 
 #### 5.2.5 Mappings of reads to genome chunks
 
