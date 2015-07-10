@@ -26,7 +26,7 @@ class MCFLogger{
 	public:
 		MCFLogger(){
 			if(!logFile.is_open()) {
-				printf("myFile failed to open!");
+				//printf("myFile failed to open!");
 			}
 			logFile.open((char*)("Logs/MCF_Log_"+getTime()+".log").c_str());
 		}
