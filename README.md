@@ -199,7 +199,7 @@ If the total number of reads is 100, with average read length 50, and they map t
 	r3	-1
 	r4	-1
 	@arcs
-	label	cost
+			label	cost
 	r1	1_0	0	100
 	r1	2_1	1	110
 	r2	1_1	2	118
