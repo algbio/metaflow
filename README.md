@@ -115,7 +115,7 @@ The file format is the following one (\t is the TAB character):
 The file starts with two lines marks the beginning of:
 
 	@nodes
-	label\tgenomew
+	label\tgenome
 
 #### 5.2.2 Genome chunk nodes
 
