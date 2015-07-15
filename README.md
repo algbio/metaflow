@@ -1,5 +1,10 @@
-# MetaFlow
-*MetaFlow* is a tool for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their abundances (relative to the known reference genomes). Contact: tomescu [at] cs.helsinki.fi
+# MetaFlow 
+*MetaFlow* is a tool for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their abundances (relative to the known reference genomes). 
+
+**Version: 0.9**
+
+**Contact: tomescu [at] cs.helsinki.fi**
+
 
 # 1. Installing and compiling
 
@@ -69,14 +74,14 @@ All output files are in CSV format (TAB-separated) to make any further analysis 
 |-------------------------------|-----------------------------------------------------------------------------------------------|
 | **abundance.csv** 				| The main output file. It contains the final estimation of the species richness and abundance.	**The abundances are relative to the known species (from the Genome_file)**. |
 | **dist.csv** 						| It contains the final distribution of the reads over all chunks in all genomes.				|
-| stage0.abundance.csv			| Intermediary internal files that contain the estimation of the species richness and abundance	|
-| stage1.abundance.csv			| Intermediary adundances after stage 1															|
-| stage2.abundance.csv			| Intermediary adundances after stage 2															|
-| stage3.abundance.csv			| Intermediary adundances after stage 3															|
-| stage0.dist.csv				| Intermediary internal files that contains the distribution of the reads over the genome chunks|
-| stage1.dist.csv				| Intermediary read distribution after stage 1													|
-| stage2.dist.csv				| Intermediary read distribution after stage 2 													|
-| stage3.dist.csv				| Intermediary read distribution after stage 2 													|
+| Step0.abundance.csv			| Intermediary internal files that contain the estimation of the species richness and abundance	|
+| Step1.abundance.csv			| Intermediary adundances after stage 1															|
+| Step2.abundance.csv			| Intermediary adundances after stage 2															|
+| Step3.abundance.csv			| Intermediary adundances after stage 3															|
+| Step0.dist.csv				| Intermediary internal files that contains the distribution of the reads over the genome chunks|
+| Step1.dist.csv				| Intermediary read distribution after stage 1													|
+| Step2.dist.csv				| Intermediary read distribution after stage 2 													|
+| Step3.dist.csv				| Intermediary read distribution after stage 3 													|
 | .log 							| The running log file.																			|
 
 # 5. Additonal information
