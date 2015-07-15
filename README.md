@@ -86,11 +86,11 @@ All output files are in CSV format (TAB-separated, not COMMA separated) to make 
 
 ## 4.1 Drawing a circular cladogram using GraPhlAn
 
-We provide a Python script for converting MetaFlow's output **abundance.csv** file into a svg image containing a circular representation as this one 
+We provide a Python script for converting MetaFlow's output **abundance.csv** file into an SVG image containing a circular representation as this one 
 
 ![Example tree image](Drawing/tree_stool_sample.png)
 
-based on Nicola Segata's [GraPhlAn](https://bitbucket.org/nsegata/graphlan/src). First install GraPhlAn as described in its manual. Then, run 
+based on Nicola Segata's [GraPhlAn](https://bitbucket.org/nsegata/graphlan/src). First install GraPhlAn as described in its manual. Then, run
 
 	python Drawing/draw.py -i Abundance_File.csv -g Path_to_Graphlan
 
