@@ -92,12 +92,12 @@ We provide a Python script for converting MetaFlow's output **abundance.csv** fi
 
 based on Nicola Segata's [GraPhlAn](https://bitbucket.org/nsegata/graphlan/src). First install GraPhlAn as described in its manual. Then, run 
 
-	python Drawing/draw.py -i abundance.csv -g PATH_TO_GRAPHLAN 
+	python Drawing/draw.py -i Abundance_File.csv -g Path_to_Graphlan
 
 where 
 
-- **abundance.csv** is the output of MetaFlow
-- **PATH_TO_GRAPHLAN** is the path to the **graphlan** folder in your filesystem (include the final '/')
+- **Abundance_File.csv** is the output of MetaFlow
+- **Path_to_Graphlan** is the path to the **graphlan** folder in your filesystem (include the final '/')
 	
 #### Example
 
