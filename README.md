@@ -6,7 +6,9 @@
 
 # 1. Installing and compiling
 
-*MetaFlow* is written in C++ and requires the free [LEMON library](http://lemon.cs.elte.hu). We provide a precompiled version of LEMON in the directory **lemon_binaries_linux**. To install *MetaFlow*, in the **metaflow** directory run:
+*MetaFlow* is written in C++ and requires the free [LEMON library](http://lemon.cs.elte.hu). We provide a precompiled version of LEMON in the directory **Src/lemon_binaries_linux**. If you need to use your own compilation of LEMON, update the variable **PATH_TO_LEMON** in *Makefile*.
+
+To install *MetaFlow*, run in the **metaflow** directory:
 
 	make
 
@@ -25,7 +27,7 @@ which produces the file *Read_Mappings.lgf* in the same directory of Read_Mappin
 - **Average_Read_Length**: The average read length of the metagenomics read in the fasta file. 
 - **Sequencing_Machine**: Integer value (0 For Illumina, 1 For 454 Pyrosequencing)
 	
-See Section **Genome File** below if you want to write your own script for convering read alignments (e.g. from a different aligner than *BLAST*) to the **LGF** format required for running *MetaFlow*.
+See Section **Genome File** below if you want to write your own script for converting read alignments (e.g. from a different aligner than *BLAST*) to the **LGF** format required for running *MetaFlow*.
 	
 #### Example
 
