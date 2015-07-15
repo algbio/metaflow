@@ -27,7 +27,7 @@ which produces the file *Read_Mappings.lgf* in the same directory of Read_Mappin
 - **Average_Read_Length**: The average read length of the metagenomics read in the fasta file. 
 - **Sequencing_Machine**: Integer value (0 For Illumina, 1 For 454 Pyrosequencing)
 	
-See Section **Genome File** below if you want to write your own script for convering read alignments (e.g. from a different aligner than *BLAST*) to the **LGF** format required for running *MetaFlow*.
+See Section **Genome File** below if you want to write your own script for converting read alignments (e.g. from a different aligner than *BLAST*) to the **LGF** format required for running *MetaFlow*.
 	
 #### Example
 
