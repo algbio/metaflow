@@ -101,7 +101,7 @@ where
 	
 #### Example
 
-	python draw -i example.csv -g ~/graphlan/
+	python Drawing/draw.py -i example.csv -g ~/graphlan/
 	
 
 # 5. Additonal information
