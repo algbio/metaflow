@@ -153,7 +153,7 @@ int main(int argc, char **argv) {
 		"This is free software: you are free to change and redistribute it.\n"
 		"There is NO WARRANTY, to the extent permitted by law.";
 	const string desc = "MetaFlow is a tool for community profiling of a metagenomic sample."
-		" It reports the known species present in a metagenomics sample and their abundances"
+		" It reports the known species present in a metagenomics sample and their abundances "
 		"(relative to the known reference genomes).";
 	const string epilog = "";
 	
@@ -163,9 +163,9 @@ int main(int argc, char **argv) {
     	.description(desc)
     	.epilog(epilog);
 
-	parser.add_option("-m", "--mappings") .type("string") .dest("m") .set_default("") .help("The mapping file, in LGF format. This can be produced from BLAST alignments (tabular format with format=6) with the included Python script BLAST_TO_LGF.py. See the manual for more details.");
-	parser.add_option("-g", "--genome") .type("string") .dest("g") .set_default("") .help("Genome file. You can use the one included in 'NCBI/NCBI_Ref_Genome.txt'. See the manual for more details.");
-	parser.add_option("-c", "--config") .type("string") .dest("c").set_default("") .help("The config file. You can use/modifiy the one included 'metaflow.config'. See the manual for more details.");
+	parser.add_option("-m", "--mappings") .type("string") .dest("m") .set_default("") .help("The read mapping file, in LGF format. This can be produced from BLAST alignments (tabular format with format=6) with the enclosed Python script BLAST_TO_LGF.py. See the manual for more details.");
+	parser.add_option("-g", "--genome") .type("string") .dest("g") .set_default("") .help("Genome file. You can use: 'NCBI/NCBI_Ref_Genome.txt'. See the manual for more details.");
+	parser.add_option("-c", "--config") .type("string") .dest("c").set_default("") .help("The config file. You can use/modifiy: 'metaflow.config'. See the manual for more details.");
 
 	optparse::Values& options = parser.parse_args(argc, argv);
 
