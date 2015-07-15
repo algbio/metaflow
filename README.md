@@ -6,7 +6,9 @@
 
 # 1. Installing and compiling
 
-*MetaFlow* is written in C++ and requires the free [LEMON library](http://lemon.cs.elte.hu). We provide a precompiled version of LEMON in the directory **lemon_binaries_linux**. To install *MetaFlow*, in the **metaflow** directory run:
+*MetaFlow* is written in C++ and requires the free [LEMON library](http://lemon.cs.elte.hu). We provide a precompiled version of LEMON in the directory **Src/lemon_binaries_linux**. If you need to use your own compilation of LEMON, update the variable **PATH_TO_LEMON** in *Makefile*.
+
+To install *MetaFlow*, run in the **metaflow** directory:
 
 	make
 
