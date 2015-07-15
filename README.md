@@ -88,16 +88,16 @@ All output files are in CSV format (TAB-separated, not COMMA separated) to make 
 
 We provide a Python script for converting MetaFlow's output **abundance.csv** file into a svg image containing a circular representation as this one 
 
-![Example image](Draw/tree_stool_sample.svg)
+![Example tree image](Drawing/tree_stool_sample.svg)
 
 based on Nicola Segata's [GraPhlAn](https://bitbucket.org/nsegata/graphlan/src). First install GraPhlAn as described in its manual. Then, run 
 
-	python draw.py -i abundance.csv -g PATH_TO_GRAPHLAN 
+	python Drawing/draw.py -i abundance.csv -g PATH_TO_GRAPHLAN 
 
 where 
 
-	- **abundance.csv** is the output of MetaFlow
-	- **PATH_TO_GRAPHLAN** is the path to the **graphlan** folder in your filesystem (include the final '/')
+- **abundance.csv** is the output of MetaFlow
+- **PATH_TO_GRAPHLAN** is the path to the **graphlan** folder in your filesystem (include the final '/')
 	
 #### Example
 
