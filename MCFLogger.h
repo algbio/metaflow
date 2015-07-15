@@ -24,18 +24,17 @@ class MCFLogger{
 		}
 		ofstream logFile;
 	public:
-		MCFLogger(){
-			if(!logFile.is_open()) {
-				//printf("myFile failed to open!");
-			}
-			logFile.open((char*)("Logs/MCF_Log_"+getTime()+".log").c_str());
-		}
+		MCFLogger() {};
+		// void init(string log_filename)
+		// {
+		// 	logFile.open((char*)(log_filename.c_str());
+		// }
 		void log(string msg){
-			cout<<msg<<endl;
-			logFile<<msg<<endl;
+			cout << msg << endl;
+			// logFile << msg << endl;
 		}
 		void close(){
-			logFile.close();
+			// logFile.close();
 		}
 };
 //MCFLogger mcfLogger;

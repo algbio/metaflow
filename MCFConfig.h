@@ -40,8 +40,9 @@
 extern MCFLogger mcfLogger;
 struct MCFConfig{
 	map<string, string> configParams;
-	MCFConfig(){
-		ifstream confFile("MCF.config");
+	MCFConfig() { };
+	MCFConfig(string config_file){
+		ifstream confFile(config_file.c_str());
 		string line;
 		vector<string>splittedLine;
 		mcfLogger.log("Configuration Parameters: ");

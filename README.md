@@ -1,9 +1,7 @@
 # MetaFlow 
-*MetaFlow* is a tool for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their abundances (relative to the known reference genomes). 
+*MetaFlow* is a program for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their abundances (relative to the known reference genomes). 
 
-**Version: 0.9**
-
-**Contact: tomescu [at] cs.helsinki.fi**
+**Version: 0.9.1. Contact: tomescu [at] cs.helsinki.fi, ahmed.sobih [at] helsinki.fi**
 
 
 # 1. Installing and compiling
@@ -45,20 +43,21 @@ to produce the output file **Example/MCF_Sample_100.blast.lgf** for this sample.
 
 Run the following command:
 
-	./metaflow input.lgf Genome_File.txt
+	./metaflow -m input.lgf -g Genome_File.txt -c metaflow.config
 
 where
 
 - **input.lgf**: the input file prepared from a read alignment file (see the previous section, **Preparing the input**)
 - **Genome_File.txt**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below.
+- **metaflow.config**: the configuration file (see below)
 
 #### Example
 
-	./metaflow Example/MCF_Sample_100.blast.lgf NCBI/NCBI_Ref_Genome.txt
+	./metaflow -m Example/MCF_Sample_100.blast.lgf -g NCBI/NCBI_Ref_Genome.txt -c metaflow.config
 
 ## Configuration file
 
-You can configure some parameters of *MetaFlow* by editting the file *MCF.config* (which must be in the same directory as the executable). The list of all these parameters and their meaning is described in the Supplementary Material of the paper. The main ones are the following ones. Decrease their value if the sample has low coverage (but false positives may be introduced).
+You can configure some parameters of *MetaFlow* by editting the file *metaflow.config* (which you must pass to metaflow with the parameter -c). The list of all these parameters and their meaning is described in the Supplementary Material of the paper. The main ones are the following ones. Decrease their value if the sample has low coverage (but false positives may be introduced).
 
 - **REQUIRED_MIN_ABUNDANCE** For any species, if the absolute abundance is lower than REQUIRED_MIN_ABUNDANCE, then that species is considered an outlier and will be removed (default=**0.3**).
 - **REQUIRED_AVERAGE_CHUNKS_COVERAGE** For any species, if the average coverage of its chunks (number of reads/number of chunks) is lower than REQUIRED_AVERAGE_CHUNKS_COVERAGE, then the species is considered an outlier and will be removed (default=**2**). 
@@ -68,21 +67,20 @@ You can configure some parameters of *MetaFlow* by editting the file *MCF.config
 
 # 4. Reading the output
 
-All output files are in CSV format (TAB-separated) to make any further analysis easy. They will be generated in the same folder where the input LGF file is located, except for the log file which will be generated in the **Log** directory. The main output file is **abundance.csv**. All output files are described below.
+All output files are in CSV format (TAB-separated, not COMMA separated) to make any further analysis easy. They will be generated in the same folder where the input LGF file is located. The main output file is **abundance.csv**. All output files are described below.
 
 |	File 						|	Description																					|
 |-------------------------------|-----------------------------------------------------------------------------------------------|
 | **abundance.csv** 				| The main output file. It contains the final estimation of the species richness and abundance.	**The abundances are relative to the known species (from the Genome_file)**. |
 | **dist.csv** 						| It contains the final distribution of the reads over all chunks in all genomes.				|
 | Step0.abundance.csv			| Intermediary internal files that contain the estimation of the species richness and abundance	|
-| Step1.abundance.csv			| Intermediary adundances after stage 1															|
-| Step2.abundance.csv			| Intermediary adundances after stage 2															|
-| Step3.abundance.csv			| Intermediary adundances after stage 3															|
+| Step1.abundance.csv			| Intermediary adundances after Step 1															|
+| Step2.abundance.csv			| Intermediary adundances after Step 2															|
+| Step3.abundance.csv			| Intermediary adundances after Step 3															|
 | Step0.dist.csv				| Intermediary internal files that contains the distribution of the reads over the genome chunks|
-| Step1.dist.csv				| Intermediary read distribution after stage 1													|
-| Step2.dist.csv				| Intermediary read distribution after stage 2 													|
-| Step3.dist.csv				| Intermediary read distribution after stage 3 													|
-| .log 							| The running log file.																			|
+| Step1.dist.csv				| Intermediary read distribution after Step 1													|
+| Step2.dist.csv				| Intermediary read distribution after Step 2 													|
+| Step3.dist.csv				| Intermediary read distribution after Step 3 													|
 
 # 5. Additonal information
 ## 5.1 Genome file

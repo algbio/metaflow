@@ -4,6 +4,7 @@
 #include "MCFFlowSolver.h"
 #include "MCFGenetic.h"
 #include "MCFLogger.h"
+#include "OptionParser.h"
 
 using namespace lemon;
 //using namespace boost;
@@ -143,36 +144,63 @@ int runMCFMapper(string lgfFile, string ncbiRefFile){
 }
 
 int main(int argc, char **argv) {
-	mcfLogger.log("*************************main Start*******************");
-	/*
-	 * Always pass two parameters. One parameter is an old implementation, in which reads were clustered into different samples to speed up the tool.
-	 * argc[1]: The lgf mapping file.
-	 * argc[2]: NCBI reference genome file. Currently we use the file (NCBI_Ref_Genome.txt) inside the folder NCBI.
-	 */
-	if (argc<2) {
-		mcfLogger.log("Parameters: [MappingFile] [ReferenceGenome]" );
-		return 0;
+
+	// command line argument parser
+	string usage = "\n  %prog OPTIONS";
+	const string version = "%prog 0.9.1\nCopyright (C) 2013-2015\n"
+		"License GPLv2+: GNU GPL version 2 "
+		"<http://gnu.org/licenses/gpl.html>.\n"
+		"This is free software: you are free to change and redistribute it.\n"
+		"There is NO WARRANTY, to the extent permitted by law.";
+	const string desc = "MetaFlow is a tool for community profiling of a metagenomic sample."
+		" It reports the known species present in a metagenomics sample and their abundances"
+		"(relative to the known reference genomes).";
+	const string epilog = "";
+	
+	optparse::OptionParser parser = optparse::OptionParser()
+    	.usage(usage)
+    	.version(version)
+    	.description(desc)
+    	.epilog(epilog);
+
+	parser.add_option("-m", "--mappings") .type("string") .dest("m") .set_default("") .help("The mapping file, in LGF format. This can be produced from BLAST alignments (tabular format with format=6) with the included Python script BLAST_TO_LGF.py. See the manual for more details.");
+	parser.add_option("-g", "--genome") .type("string") .dest("g") .set_default("") .help("Genome file. You can use the one included in 'NCBI/NCBI_Ref_Genome.txt'. See the manual for more details.");
+	parser.add_option("-c", "--config") .type("string") .dest("c").set_default("") .help("The config file. You can use/modifiy the one included 'metaflow.config'. See the manual for more details.");
+
+	optparse::Values& options = parser.parse_args(argc, argv);
+
+	string mappings_file = (string) options.get("m");
+	string genome_file = (string) options.get("g");
+	string config_file = (string) options.get("c");
+	
+	if (mappings_file == "")
+	{
+		cerr << "Parameter -m|--mappings should not be empty. Run ./metaflow -h|--help for details." << endl;
+		return EXIT_FAILURE;
 	}
+	if (genome_file == "")
+	{
+		cerr << "Parameter -g|--genome should not be empty. Run ./metaflow -h|--help for details." << endl;
+		return EXIT_FAILURE;
+	}
+	if (config_file == "")
+	{
+		cerr << "Parameter -c|--config should not be empty. Run ./metaflow -h|--help for details." << endl;
+		return EXIT_FAILURE;
+	}
+
+	configSt = MCFConfig(config_file);
+
+	mcfLogger.log("*************************main Start*******************");
 	clock_t startTime=clock();
 	int result=0;
-	if(argc==3){
-		result=runMCFMapper(argv[1],argv[2]);
-	}
-	else{
-		result= runMCFMapper(argv[1]);
-	}
+	result=runMCFMapper(mappings_file.c_str(),genome_file.c_str());
+
 	mcfLogger.log("**********************main End************************");
 	mcfLogger.log("*****************************************************");
 	printRunningTime(startTime, "Finding Optimal Abundance Total Running Time: ");
 	mcfLogger.log("Finished!!");
 	mcfLogger.close();
 	return result;
+
 }
-
-
-
-/*
-g++ MCFmapper.cpp MCFutils.cpp MCFgenetic.cpp MCFflowsolver.cpp -I lemon/include -L lemon/lib -lemon -o MCFmapper -O3 -pedantic -Wall -Wno-long-long
-./MCFmapper mapping.lgf genome-names.txt
-g++ MCFmapper.cpp MCFutils.cpp MCFgenetic.cpp MCFflowsolver.cpp -I /cs/fs/home/tomescu/lemon/include -L /cs/fs/home/tomescu/lemon/lib -lemon -o MCFmapper -O3 -pedantic -Wall -Wno-long-long
-*/

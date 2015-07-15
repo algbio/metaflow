@@ -1,5 +1,5 @@
 CC = g++
-FILES = MCFConfig.h MCFFlowSolver.cpp MCFGenetic.cpp MCFMapper.cpp MCFUtils.cpp MCFUtils_Temp.cpp
+FILES = MCFConfig.h MCFFlowSolver.cpp MCFGenetic.cpp MCFMapper.cpp MCFUtils.cpp MCFUtils_Temp.cpp OptionParser.cpp
 OUT_EXE = metaflow
 PATH_TO_LEMON = ./lemon_binaries_linux/include/
 
