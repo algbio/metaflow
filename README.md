@@ -97,7 +97,7 @@ based on Nicola Segata's [GraPhlAn](https://bitbucket.org/nsegata/graphlan/src).
 where 
 
 - **Abundance_File.csv** is the output of MetaFlow
-- **Path_to_Graphlan** is the path to the **graphlan** folder in your filesystem (include the final '/')
+- **Path_to_Graphlan** is the path to the GraPhlAn installation in your filesystem (include the final '/')
 	
 #### Example
 
@@ -107,7 +107,7 @@ where
 # 5. Additonal information
 ## 5.1 Genome file
 
-We already provide one for the NCBI database, retrieved on June 10, 2015, in the directory **NCBI**. **Read this section if you want to add new known genome references to the analysis**.
+We already provide one for the NCBI database, retrieved on June 10, 2015, in the folder **NCBI**. **Read this section if you want to add new known genome references to the analysis**.
 
 The genome file contains a list of the bacterial genomes and their length. Do not include plasmids. Each line has the format:
 
