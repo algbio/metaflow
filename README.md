@@ -74,7 +74,7 @@ All output files are in CSV format (TAB-separated, not COMMA separated) to make 
 |	File 						|	Description																					|
 |-------------------------------|-----------------------------------------------------------------------------------------------|
 | **abundance.csv** 				| The main output file. It contains the final estimation of the species richness and abundance.	**The abundances are relative to the known species (from the Genome_file)**. |
-| **dist.csv** 						| It contains the final distribution of the reads over all chunks in all genomes.				|
+| **dist.csv** 						| It contains the final distribution of the reads over all chunks in all known genomes.				|
 | Step0.abundance.csv			| Intermediary internal files that contain the estimation of the species richness and abundance	|
 | Step1.abundance.csv			| Intermediary adundances after Step 1															|
 | Step2.abundance.csv			| Intermediary adundances after Step 2															|
