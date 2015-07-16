@@ -57,7 +57,7 @@ where
 
 	./metaflow -m Example/MCF_Sample_100.blast.lgf -g NCBI/NCBI_Ref_Genome.txt -c metaflow.config
 
-## Configuration file
+## 3.1 Configuration file
 
 You can configure some parameters of *MetaFlow* by editting the file *metaflow.config* (which you must pass to metaflow with the parameter -c). The list of all these parameters and their meaning is described in the Supplementary Material of the paper. The main ones are the following ones. Decrease their value if the sample has low coverage (but false positives may be introduced).
 
