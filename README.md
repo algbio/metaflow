@@ -16,11 +16,11 @@ This will create the executable **metaflow** in the same directory.
 
 # 2. Preparing the input
 
-*MetaFlow*'s input is a graph based representation, in LEMON's **LGF** format (LEMON Graph Format, of the alignments of the metagenomic reads in a collection of reference bacterial genomes. We experimented only with *BLAST* alignments (though any aligner could be used) and have created a Python script **BLAST_TO_LGF.py** which converts *BLAST*'s output to an input for *MetaFlow*. Run:
+*MetaFlow*'s input is a graph-based representation, in LEMON's **LGF** format (LEMON Graph Format), of the alignments of the metagenomic reads in a collection of reference bacterial genomes. We experimented only with *BLAST* alignments (though any aligner could be used) and have created a Python script **BLAST_TO_LGF.py** which converts *BLAST*'s output to an input **LGF** file for *MetaFlow*. Run:
 
 	python BLAST_TO_LGF.py Read_Mappings.blast Genome_File Average_Read_Length Sequencing_Machine
 	
-which produces the file *Read_Mappings.lgf* in the same directory of Read_Mappings.blast file. The parameters are:
+which produces the file *Read_Mappings.lgf* in the same directory as the Read_Mappings.blast file. The parameters are:
 
 - **Read_Mappings.blast**: Blast output file. It must be the tabular format with format=6
 - **Genome_File**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below.
