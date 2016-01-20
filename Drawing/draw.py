@@ -115,7 +115,8 @@ inputFilename = args.inputFileName;
 graphlanPath = args.pathToGraPhlAn;
 outputFileName = os.path.splitext(inputFilename)[0] + ".txt";
 
-with open('FlatTaxonomy.txt') as f1:
+dir_to_stript = os.path.dirname(os.path.abspath(__file__))
+with open(dir_to_stript + '/FlatTaxonomy.txt') as f1:
     speciesFull = f1.read().splitlines()
 
 with open(inputFilename) as f2:
