@@ -16,11 +16,11 @@ This will create the executable **metaflow** in the same directory.
 
 # 2. Preparing the input
 
-*MetaFlow*'s input is a graph based representation, in LEMON's **LGF** format (LEMON Graph Format, of the alignments of the metagenomic reads in a collection of reference bacterial genomes. We experimented only with *BLAST* alignments (though any aligner could be used) and have created a Python script **BLAST_TO_LGF.py** which converts *BLAST*'s output to an input for *MetaFlow*. Run:
+*MetaFlow*'s input is a graph-based representation, in LEMON's **LGF** format (LEMON Graph Format), of the alignments of the metagenomic reads in a collection of reference bacterial genomes. We experimented only with *BLAST* alignments (though any aligner could be used) and have created a Python script **BLAST_TO_LGF.py** which converts *BLAST*'s output to an input **LGF** file for *MetaFlow*. Run:
 
 	python BLAST_TO_LGF.py Read_Mappings.blast Genome_File Average_Read_Length Sequencing_Machine
 	
-which produces the file *Read_Mappings.lgf* in the same directory of Read_Mappings.blast file. The parameters are:
+which produces the file *Read_Mappings.lgf* in the same directory as the Read_Mappings.blast file. The parameters are:
 
 - **Read_Mappings.blast**: Blast output file. It must be the tabular format with format=6
 - **Genome_File**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below.
@@ -57,7 +57,7 @@ where
 
 	./metaflow -m Example/MCF_Sample_100.blast.lgf -g NCBI/NCBI_Ref_Genome.txt -c metaflow.config
 
-## Configuration file
+## 3.1 Configuration file
 
 You can configure some parameters of *MetaFlow* by editting the file *metaflow.config* (which you must pass to metaflow with the parameter -c). The list of all these parameters and their meaning is described in the Supplementary Material of the paper. The main ones are the following ones. Decrease their value if the sample has low coverage (but false positives may be introduced).
 
@@ -74,7 +74,7 @@ All output files are in CSV format (TAB-separated, not COMMA separated) to make 
 |	File 						|	Description																					|
 |-------------------------------|-----------------------------------------------------------------------------------------------|
 | **abundance.csv** 				| The main output file. It contains the final estimation of the species richness and abundance.	**The abundances are relative to the known species (from the Genome_file)**. |
-| **dist.csv** 						| It contains the final distribution of the reads over all chunks in all genomes.				|
+| **dist.csv** 						| It contains the final distribution of the reads over all chunks in all known genomes.				|
 | Step0.abundance.csv			| Intermediary internal files that contain the estimation of the species richness and abundance	|
 | Step1.abundance.csv			| Intermediary adundances after Step 1															|
 | Step2.abundance.csv			| Intermediary adundances after Step 2															|
@@ -86,28 +86,28 @@ All output files are in CSV format (TAB-separated, not COMMA separated) to make 
 
 ## 4.1 Drawing a circular cladogram using GraPhlAn
 
-We provide a Python script for converting MetaFlow's output **abundance.csv** file into a svg image containing a circular representation as this one 
+We provide a Python script for converting MetaFlow's output **abundance.csv** file into an SVG image containing a circular representation as this one 
 
 ![Example tree image](Drawing/tree_stool_sample.png)
 
-based on Nicola Segata's [GraPhlAn](https://bitbucket.org/nsegata/graphlan/src). First install GraPhlAn as described in its manual. Then, run 
+based on [Nicola Segata](http://cibiocm.bitbucket.org)'s [GraPhlAn](https://bitbucket.org/nsegata/graphlan/src). First install GraPhlAn as described in its manual. Then, run
 
-	python Drawing/draw.py -i abundance.csv -g PATH_TO_GRAPHLAN 
+	python Drawing/draw.py -i Abundance_File.csv -g Path_to_Graphlan/
 
 where 
 
-- **abundance.csv** is the output of MetaFlow
-- **PATH_TO_GRAPHLAN** is the path to the **graphlan** folder in your filesystem (include the final '/')
+- **Abundance_File.csv** is the output of MetaFlow
+- **Path_to_Graphlan** is the path to the GraPhlAn installation in your filesystem (include the final '/')
 	
 #### Example
 
-	python Drawing/draw.py -i example.csv -g ~/graphlan/
+	python Drawing/draw.py -i Drawing/example.csv -g ~/graphlan/
 	
 
 # 5. Additonal information
 ## 5.1 Genome file
 
-We already provide one for the NCBI database, retrieved on June 10, 2015, in the directory **NCBI**. **Read this section if you want to add new known genome references to the analysis**.
+We already provide one for the NCBI database, retrieved on June 10, 2015, in the folder **NCBI**. **Read this section if you want to add new known genome references to the analysis**.
 
 The genome file contains a list of the bacterial genomes and their length. Do not include plasmids. Each line has the format:
 
