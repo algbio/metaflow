@@ -22,8 +22,8 @@ This will create the executable **metaflow** in the same directory.
 	
 which produces the file *Read_Mappings.lgf* in the same directory as the Read_Mappings.blast file. The parameters are:
 
-- **Read_Mappings.blast**: Blast output file. It must be the tabular format with format=6
-- **Genome_File**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below.
+- **Read_Mappings.blast**: Blast output file. It must be the tabular format with format=6. You can download the actual NCBI genome sequences from here: [ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_refseq/Bacteria/all.fna.tar.gz](ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_refseq/Bacteria/all.fna.tar.gz)
+- **Genome_File**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below. 
 - **Average_Read_Length**: The average read length of the metagenomics read in the fasta file. 
 - **Sequencing_Machine**: Integer value (0 For Illumina, 1 For 454 Pyrosequencing)
 	
