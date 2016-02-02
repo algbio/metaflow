@@ -245,3 +245,4 @@ If the total number of reads is 100, with average read length 50, and they map t
 ## 5.3 Creating BLAST database
 We provide a python script for creating BLAST database from the NCBI bacterial genomes. To create the BLAST database, run:
 python Create_Blast_DB.py [Path to BLAST aligner bin]
+The database will be created inside the folder MetaFlow_Blast/
