@@ -16,13 +16,15 @@ This will create the executable **metaflow** in the same directory.
 
 # 2. Preparing the input
 
-*MetaFlow*'s input is a graph-based representation, in LEMON's **LGF** format (LEMON Graph Format), of the alignments of the metagenomic reads in a collection of reference bacterial genomes. We experimented only with *BLAST* alignments (though any aligner could be used) and have created a Python script **BLAST_TO_LGF.py** which converts *BLAST*'s output to an input **LGF** file for *MetaFlow*. Run:
+*MetaFlow*'s input is a graph-based representation, in LEMON's **LGF** format (LEMON Graph Format), of the alignments of the metagenomic reads in a collection of reference bacterial genomes. We experimented only with *BLAST* alignments (though any aligner could be used). We provide a script *Create_Blast_DB.py* (see Section **5.3 Creating BLAST database** below) which downloads all reference genomes from NCBI ([ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_refseq/Bacteria/all.fna.tar.gz](ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_refseq/Bacteria/all.fna.tar.gz)) and builds a BLAST database from them.  
+
+We created a Python script **BLAST_TO_LGF.py** which converts *BLAST*'s output to an input **LGF** file for *MetaFlow*. Run:
 
 	python BLAST_TO_LGF.py Read_Mappings.blast Genome_File Average_Read_Length Sequencing_Machine
 	
 which produces the file *Read_Mappings.lgf* in the same directory as the Read_Mappings.blast file. The parameters are:
 
-- **Read_Mappings.blast**: Blast output file. It must be the tabular format with format=6. You can download the actual NCBI genome sequences from here: [ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_refseq/Bacteria/all.fna.tar.gz](ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_refseq/Bacteria/all.fna.tar.gz)
+- **Read_Mappings.blast**: Blast output file. It must be the tabular format with format=6.
 - **Genome_File**: a file containing the genomes in the reference database and their lengths. We provide one for NCBI database in the folder **NCBI**, retrieved on June 10, 2015. If you are using different or updated database, you need to update or change the genome file to incorporate all the reference genomes. This file format is explained in Section **Genome file** below. 
 - **Average_Read_Length**: The average read length of the metagenomics read in the fasta file. 
 - **Sequencing_Machine**: Integer value (0 For Illumina, 1 For 454 Pyrosequencing)
@@ -243,8 +245,10 @@ If the total number of reads is 100, with average read length 50, and they map t
 	min_cost	100
 	
 ## 5.3 Creating BLAST database
-We provide a python script for creating BLAST database from the NCBI bacterial genomes. To create the BLAST database, run:
+We provide a Python script which downloads all bacterial reference genomes from NCBI, and creates a BLAST database from them (excluding plasmids and transposons). This can be used when aligning the reads with BLAST. To create the BLAST database, run:
 
-	python Create_Blast_DB.py [Path to BLAST aligner bin]
+	python Create_Blast_DB.py Path_to_BLAST_aligner_bin
 
-The database will be created inside the folder MetaFlow_Blast/
+where *Path_to_BLAST_aligner_bin* (without the trailing '/') is the path to where BLAST binaries are. The database will be created inside the folder *MetaFlow_Blast/*. For example:
+
+	python Create_Blast_DB.py ~/ncbi-blast-2.3.0+/bin
