@@ -241,3 +241,7 @@ If the total number of reads is 100, with average read length 50, and they map t
 	avg_read_length	50
 	max_cost	118
 	min_cost	100
+	
+## 5.3 Creating BLAST database
+We provide a python script for creating BLAST database from the NCBI bacterial genomes. To create the BLAST database, run:
+python Create_Blast_DB.py [Path to BLAST aligner bin]
