@@ -1,5 +1,7 @@
 # MetaFlow 
-*MetaFlow* is a program for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their abundances (relative to the known reference genomes). 
+*MetaFlow* is a program for community profiling of a metagenomic sample. It reports the known species present in a metagenomics sample and their abundances (relative to the known reference genomes). See more details about *MetaFlow* (including the manuscript describing it) at [http://www.cs.helsinki.fi/en/gsa/metaflow](http://www.cs.helsinki.fi/en/gsa/metaflow). 
+
+**A concise tutorial coming soon!**
 
 **Version: 0.9.1. Contact: tomescu [at] cs.helsinki.fi, ahmed.sobih [at] helsinki.fi**
 
