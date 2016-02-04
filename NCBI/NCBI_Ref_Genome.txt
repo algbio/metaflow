@@ -101,7 +101,6 @@ Thermotoga_maritima	1860725
 Methanosarcina_mazei	3427949
 Chloroflexus_aggregans	4684931
 Megamonas_hypermegale	2209938
-Bacteroides_uniformis	4872173
 Azoarcus_sp._BH72	4376040
 Haliangium_ochraceum	9446314
 Ruegeria_sp._TM1040	3200938
