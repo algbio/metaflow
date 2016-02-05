@@ -72,17 +72,20 @@ We construct a *BLAST* database for this file:
 
 ## Step 4
 
-We align our file *Tutorial/mock_sample.fna* with BLAST against this database. Remember to add the parameter *-outfmt 6* (tabular format). Change *num_threads 8* to the number of threads you want to use.
+We align our file **Tutorial/mock_sample.fna** with BLAST against this database. Remember to add the parameter **-outfmt 6** (tabular format). Change **num_threads 8* *to the number of threads you want to use.
 
 	~/ncbi-blast-2.3.0+/bin/blastn -query Tutorial/mock_sample.fna -out Tutorial/mock_sample.blast -outfmt 6 -db ./MetaFlow_Blast/MetaFlow_BLAST_DB -num_threads 8
 
-We should now have a file *Tutorial/mock_sample.blast* looking like this
+We should now have a file **Tutorial/mock_sample.blast** looking like this
 
+	r1.1    Alteromonas_macleodii   99.592  245     1       0       1       245     1658204 1658448 1.63e-123       448
+	r1.1    Alteromonas_sp._SN2     78.261  230     44      6       13      239     2469491 2469265 8.60e-32        143
+	r2.1    Alteromonas_macleodii   96.957  230     7       0       1       230     2686617 2686846 3.45e-105       387
 	...
 
 ## Step 5
 
-From these BLAST alignments stored in *Tutorial/mock_sample.blast*, we construct the input LGF file for **MetaFlow**:
+From these BLAST alignments stored in **Tutorial/mock_sample.blast**, we construct the input LGF file for *MetaFlow*:
 
 	python BLAST_TO_LGF.py Tutorial/mock_sample.blast NCBI_DB/NCBI_Ref_Genome.txt 250 1
 
