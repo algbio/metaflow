@@ -1,16 +1,17 @@
 import sys
 import math
 
-print "Paramters: Blast_File NCBI_Genome_File Average_Read_Length Sequence_Machine"
-print "		1-Blast_File: Blast output file. The format must be in the tablular format, by running blastn with parameter [-outfmt 6]"
-print "		2-NCBI_Genome_File: A file containing the species' names and their length in the NCBI database. The default file path is NCBI/NCBI/NCBI_Ref_Genome.txt."
-print "		3-Average_Read_Length: The average read length of the reads in the sample. "
-print "		4-Sequence_Machine: 0 for Illumina, 1 for 454 Pyrosequencing. If any other sequencer is used, 0 should be given."
-
 print sys.argv
 if len(sys.argv)<5:
-	print "Missing paramters!"
+	print "Missing parameters!"
+	print "Parameters: Blast_File NCBI_Genome_File Average_Read_Length Sequence_Machine"
+	print "		1-Blast_File: Blast output file. The format must be in the tablular format, by running blastn with parameter [-outfmt 6]"
+	print "		2-NCBI_Genome_File: A file containing the species' names and their length in the NCBI database."
+	print "		3-Average_Read_Length: The average read length of the reads in the sample."
+	print "		4-Sequence_Machine: 0 for Illumina, 1 for 454 Pyrosequencing. If any other sequencer is used, 0 should be given."
 	sys.exit()
+
+print "Constructing the LGF file..."
 blastFile=sys.argv[1]
 lgfFile=blastFile+".lgf"
 ncbiFile=sys.argv[2]
