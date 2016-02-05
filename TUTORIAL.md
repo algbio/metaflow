@@ -1,8 +1,8 @@
 # MetaFlow Tutorial
 
-Here is a step-by-step tutorial on using **MetaFlow**. 
+Here is a step-by-step tutorial on using *MetaFlow*. 
 
-We have the file *Tutorial/mock_sample.fna* of 454 Pyrosequencing reads that we want to analyze. This file looks like this:
+We have the file **Tutorial/mock_sample.fna** of 454 Pyrosequencing reads that we want to analyze. This file looks like this:
 
 	>r1.1 
 	GCGGAAACGGCTTTAAAACAAGCAAAAGAAAACAAATACGAAAATTACTTCGCGTTGACTAAGTC

@@ -3,7 +3,7 @@
 
 **Version: 0.9.2** 
 
-** Contact: [open an issue on github](https://github.com/alexandrutomescu/metaflow/issues) or by e-mail: tomescu [at] cs.helsinki.fi, ahmed.sobih [at] helsinki.fi**
+**Contact: [open an issue on github](https://github.com/alexandrutomescu/metaflow/issues) or by e-mail: tomescu [at] cs.helsinki.fi, ahmed.sobih [at] helsinki.fi**
 
 ## Tutorial: [TUTORIAL.md](https://github.com/alexandrutomescu/metaflow/blob/master/TUTORIAL.md)
 
