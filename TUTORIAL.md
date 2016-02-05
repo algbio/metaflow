@@ -66,13 +66,13 @@ If you want to add other reference genomes to this database, e.g., partial conti
 
 ## Step 3
 
-We construct a *BLAST* database for this file:
+We construct a *BLAST* database for this fasta file:
 
 	~/ncbi-blast-2.3.0+/makeblastdb -in NCBI_DB/BLAST_DB.fasta -out NCBI_DB/BLAST_DB.fasta -dbtype nucl
 
 ## Step 4
 
-We align our file **Tutorial/mock_sample.fna** with BLAST against this database. Remember to add the parameter **-outfmt 6** (tabular format). Change **num_threads 8* *to the number of threads you want to use.
+We align our file **Tutorial/mock_sample.fna** with BLAST against this database. Remember to add the parameter **-outfmt 6** (tabular format). Change **num_threads 8** to the number of threads you want to use.
 
 	~/ncbi-blast-2.3.0+/bin/blastn -query Tutorial/mock_sample.fna -out Tutorial/mock_sample.blast -outfmt 6 -db ./MetaFlow_Blast/MetaFlow_BLAST_DB -num_threads 8
 
