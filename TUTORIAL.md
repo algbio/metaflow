@@ -74,7 +74,7 @@ We construct a *BLAST* database for this fasta file:
 
 We align our file **Tutorial/mock_sample.fna** with BLAST against this database. Remember to add the parameter **-outfmt 6** (tabular format). Change **num_threads 8** to the number of threads you want to use.
 
-	~/ncbi-blast-2.3.0+/bin/blastn -query Tutorial/mock_sample.fna -out Tutorial/mock_sample.blast -outfmt 6 -db ./MetaFlow_Blast/MetaFlow_BLAST_DB -num_threads 8
+	~/ncbi-blast-2.3.0+/bin/blastn -query Tutorial/mock_sample.fna -out Tutorial/mock_sample.blast -outfmt 6 -db NCBI_DB/BLAST_DB.fasta -num_threads 8
 
 We should now have a file **Tutorial/mock_sample.blast** looking like this
 
