@@ -47,15 +47,9 @@ See Section **Genome File** below if you want to write your own script for conve
 	
 #### Example
 
-Download a sample BLAST alignment file (by default to **Example/MCF_Sample_100.blast**) by running in the **metaflow** folder:
-
-	make example
-	
-Then run	
-
 	python BLAST_TO_LGF.py Example/MCF_Sample_100.blast NCBI_DB/NCBI_Ref_Genome.txt 250 1
 	
-to produce the output file **Example/MCF_Sample_100.blast.lgf** for this sample. 
+produces the output file **Example/MCF_Sample_100.blast.lgf**. 
 
 # 3. Running MetaFlow
 
