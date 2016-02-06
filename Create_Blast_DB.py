@@ -32,7 +32,8 @@ print "Parsing the genomes..."
 
 genomes_concatenate_chromosomes = dict()
 genomes_minimum_length_strain = dict()
-genome_length = dict()
+genome_length_concatenate_chromosomes = dict()
+genome_length_minimum_length_strain = dict()
 
 for dirname in os.listdir(fnaDir):
 	dirname= os.path.join(fnaDir, dirname)
@@ -57,19 +58,19 @@ for dirname in os.listdir(fnaDir):
 						length += len(line) - 1  # -1 for the \n character
 					if (speciesName not in genomes_minimum_length_strain) or (len(sequence) < genomes_minimum_length_strain[speciesName]):
 						genomes_minimum_length_strain[speciesName] = sequence
-						genome_length[speciesName] = length
+						genome_length_minimum_length_strain[speciesName] = length
 
 				if "complete sequence" in header.lower():
 					if (speciesName not in genomes_concatenate_chromosomes):
 						genomes_concatenate_chromosomes[speciesName] = ""
-						genome_length[speciesName] = 0
+						genome_length_concatenate_chromosomes[speciesName] = 0
 					sequence = ""
 					length = 0
 					for line in f:
 						sequence += line
 						length += len(line) - 1  # -1 for the \n character
 					genomes_concatenate_chromosomes[speciesName] += sequence
-					genome_length[speciesName] += length
+					genome_length_concatenate_chromosomes[speciesName] += length
 			f.close()	
 
 print "Writing the genomes to fasta file..."
@@ -78,12 +79,20 @@ blastDB= open(os.path.join(dbDir,fastaFile), "w")
 genomeList= open(os.path.join(dbDir,genomeFile), "w")
 
 for key in genomes_concatenate_chromosomes:
-	genomeList.write(key + "\t" + str(genome_length[key]) + "\n")
+	if key in genomes_minimum_length_strain:
+		if genome_length_minimum_length_strain[key] <= genome_length_concatenate_chromosomes[key]:
+			print "Skipping duplicate genome " + key
+			continue
+	genomeList.write(key + "\t" + str(genome_length_concatenate_chromosomes[key]) + "\n")
 	blastDB.write(">" + key + "\n")
 	blastDB.write(genomes_concatenate_chromosomes[key])
 
 for key in genomes_minimum_length_strain:
-	genomeList.write(key + "\t" + str(genome_length[key]) + "\n")
+	if key in genomes_concatenate_chromosomes:
+		if genome_length_minimum_length_strain[key] > genome_length_concatenate_chromosomes[key]:
+			print "Skipping duplicate genome " + key
+			continue
+	genomeList.write(key + "\t" + str(genome_length_minimum_length_strain[key]) + "\n")
 	blastDB.write(">" + key + "\n")
 	blastDB.write(genomes_minimum_length_strain[key])
 

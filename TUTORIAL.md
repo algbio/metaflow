@@ -89,7 +89,14 @@ From these BLAST alignments stored in **Tutorial/mock_sample.blast**, we constru
 
 	python BLAST_TO_LGF.py Tutorial/mock_sample.blast NCBI_DB/NCBI_Ref_Genome.txt 250 1
 
-where **250** is the average read length in our sample, and **1** is the sequencing machine (**0** for Illumina, **1** for 454 Pyrosequencing)
+where **250** is the average read length in our sample, and **1** is the sequencing machine (**0** for Illumina, **1** for 454 Pyrosequencing). We now have a file **Tutorial/mock_sample.blast.lgf** starting like this
+
+	@nodes
+	label   genome  
+	158_0   158
+	158_1   158
+	158_2   158
+	...
 
 ## Step 6
 

@@ -77,6 +77,10 @@ struct MCFResult{
 		while (getline(ncbiRefFile, line)){
 			split(splittedLine, line, "\t");
 			pair<int,int> genomeIdLengthPair=make_pair(genomeId, atoi(splittedLine[1].c_str()));
+			if (ncbiMap.find(splittedLine[0]) != ncbiMap.end())
+			{
+				cout << "duplicated " << genomeId << ":" << splittedLine[0] << " " << splittedLine[1] << endl;
+			}
 			ncbiMap[splittedLine[0]]=genomeIdLengthPair;
 			genomeId++;
 		}
@@ -105,7 +109,7 @@ void initGenomes(
 		for(map<string, pair<int,int> >::iterator itr=ncbiRefMap.begin();itr!=ncbiRefMap.end();itr++)
 		{
 			GenomeInfo& gInfo=genomeInfoVector[itr->second.first];
-			gInfo.genomeName=itr->first;
+			gInfo.genomeName=itr->first; 
 			gInfo.genomeId=itr->second.first;
 			gInfo.genomeLength=itr->second.second;
 		}
