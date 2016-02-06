@@ -68,7 +68,7 @@ If you want to add other reference genomes to this database, e.g., partial conti
 
 We construct a *BLAST* database for this fasta file:
 
-	~/ncbi-blast-2.3.0+/makeblastdb -in NCBI_DB/BLAST_DB.fasta -out NCBI_DB/BLAST_DB.fasta -dbtype nucl
+	~/ncbi-blast-2.3.0+/bin/makeblastdb -in NCBI_DB/BLAST_DB.fasta -out NCBI_DB/BLAST_DB.fasta -dbtype nucl
 
 ## Step 4
 
