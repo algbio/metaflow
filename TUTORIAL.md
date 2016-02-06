@@ -114,17 +114,3 @@ The main output is **Tutorial/mock_sample.blast.lgf.abundance.csv**, which looks
 	...
 
 where the last column contains the relative abundances.
-
-## Step 7 (Drawing a circular cladogram)
-
-We install [Nicola Segata](http://cibiocm.bitbucket.org)'s [GraPhlAn](https://bitbucket.org/nsegata/graphlan/src) in
-
-	~/graphlan/
-
-Then, we run
-
-	python Drawing/draw.py -i Tutorial/mock_sample.blast.lgf.abundance.csv -g ~/graphlan/
-	
-and Violà!
-
-![Example tree image](Drawing/tree_stool_sample.png)
