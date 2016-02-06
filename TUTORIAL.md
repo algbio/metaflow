@@ -1,6 +1,6 @@
 # MetaFlow Tutorial
 
-Here is a step-by-step tutorial on using *MetaFlow*. 
+Here is a step-by-step tutorial on using *MetaFlow*. **Download all files from this tutorial from [here](http://cs.helsinki.fi/u/tomescu/metaflow/tutorial.tar.gz).**
 
 We have the file **Tutorial/mock_sample.fna** of 454 Pyrosequencing reads that we want to analyze. This file looks like this:
 
