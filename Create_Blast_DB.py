@@ -47,8 +47,10 @@ for dirname in os.listdir(fnaDir):
 				splitLine=header.strip().split("|")[4]
 				splitLine2=splitLine.strip().split(" ")
 				speciesName = splitLine2[0] + "_" + splitLine2[1]
-				if splitLine2[1] == "sp.":
+				if splitLine2[1] == "sp." or splitLine2[1] == "genomosp." or splitLine2[1] == "cf.":
 					speciesName += "_" + splitLine2[2].strip(",")
+				speciesName = speciesName.strip(".")
+				speciesName = speciesName.strip(",")
 
 				if "complete genome" in header.lower():
 					sequence = ""
@@ -81,7 +83,7 @@ genomeList= open(os.path.join(dbDir,genomeFile), "w")
 for key in genomes_concatenate_chromosomes:
 	if key in genomes_minimum_length_strain:
 		if genome_length_minimum_length_strain[key] <= genome_length_concatenate_chromosomes[key]:
-			print "Skipping duplicate genome " + key
+			# print "Skipping duplicate genome " + key
 			continue
 	genomeList.write(key + "\t" + str(genome_length_concatenate_chromosomes[key]) + "\n")
 	blastDB.write(">" + key + "\n")
@@ -90,7 +92,7 @@ for key in genomes_concatenate_chromosomes:
 for key in genomes_minimum_length_strain:
 	if key in genomes_concatenate_chromosomes:
 		if genome_length_minimum_length_strain[key] > genome_length_concatenate_chromosomes[key]:
-			print "Skipping duplicate genome " + key
+			# print "Skipping duplicate genome " + key
 			continue
 	genomeList.write(key + "\t" + str(genome_length_minimum_length_strain[key]) + "\n")
 	blastDB.write(">" + key + "\n")
@@ -111,8 +113,6 @@ genomeList.close()
 # os.system(os.path.join(blastDir,"makeblastdb") + " -in BLAST_DB.fna -title BLAST_DB -out "+dbDir+"/NCBI_DB -dbtype nucl > "+blastLog+" 2> "+errLog)
 
 os.system("rm -r "+fnaDir)
-os.system("rm -r "+logsDir)
-
 
 # if os.stat(errLog).st_size < 20:
 # 	os.system("rm -r "+fnaDir)
