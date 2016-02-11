@@ -43,7 +43,10 @@ for dirname in os.listdir(fnaDir):
 		if filename.endswith(".fna"):				
 			f= open(os.path.join(dirname,filename), "r")
 			header = f.readline()
+			# print header
 			if ("plasmid" not in header.lower()) and ("transposon" not in header.lower()):
+
+				# normalizing the species name
 				splitLine=header.strip().split("|")[4]
 				splitLine2=splitLine.strip().split(" ")
 				speciesName = splitLine2[0] + "_" + splitLine2[1]
@@ -51,6 +54,13 @@ for dirname in os.listdir(fnaDir):
 					speciesName += "_" + splitLine2[2].strip(",")
 				speciesName = speciesName.strip(".")
 				speciesName = speciesName.strip(",")
+				speciesName = speciesName.replace("(","")
+				# speciesName = speciesName.replace(".","")
+				# speciesName = speciesName.replace("-","")
+				if speciesName.count("_") >= 3:
+					n = 3
+					groups = speciesName.split('_')
+					speciesName = '_'.join(groups[:n]) + "-" + '-'.join(groups[n:])
 
 				if "complete genome" in header.lower():
 					sequence = ""
@@ -113,6 +123,8 @@ genomeList.close()
 # os.system(os.path.join(blastDir,"makeblastdb") + " -in BLAST_DB.fna -title BLAST_DB -out "+dbDir+"/NCBI_DB -dbtype nucl > "+blastLog+" 2> "+errLog)
 
 os.system("rm -r "+fnaDir)
+
+print "Done"
 
 # if os.stat(errLog).st_size < 20:
 # 	os.system("rm -r "+fnaDir)
