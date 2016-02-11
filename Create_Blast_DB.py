@@ -55,6 +55,7 @@ for dirname in os.listdir(fnaDir):
 				speciesName = speciesName.strip(".")
 				speciesName = speciesName.strip(",")
 				speciesName = speciesName.replace("(","")
+				speciesName = speciesName.replace("'","")
 				# speciesName = speciesName.replace(".","")
 				# speciesName = speciesName.replace("-","")
 				if speciesName.count("_") >= 3:
